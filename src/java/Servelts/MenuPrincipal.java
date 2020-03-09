@@ -7,7 +7,6 @@ package Servelts;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jairo
  */
-@WebServlet(name = "ServletUser", urlPatterns = {"/ServletUser"})
-public class ServletUser extends HttpServlet {
+@WebServlet(name = "MenuPrincipal", urlPatterns = {"/MenuPrincipal"})
+public class MenuPrincipal extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,48 +34,7 @@ public class ServletUser extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>información del cliente</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<table align='center'><tr align='left'><td>");
-            out.println("<h1>Customer information</h1>");
-
-            Enumeration paramNames = request.getParameterNames();
-
-            while (paramNames.hasMoreElements()) {
-
-                String paramName = (String) paramNames.nextElement();
-
-                out.print(paramName + " = ");
-
-                String[] paramValues = request.getParameterValues(paramName);
-
-                if (paramValues.length == 1) {
-                    String paramValue = paramValues[0];
-                    if (paramValue.length() == 0) {
-                        out.println("<i>Sin valor</i><br>");
-                    } else {
-                        out.println(paramValue + "<br>");
-                    }
-                } else {
-
-                    for (int i = 0; i < paramValues.length; i++) {
-                        out.println(paramValues[i] + ", ");
-
-                    }
-
-                    out.println("<br>");
-                }
-            }
-            out.println("<form action='MenuPrincipal' method='post'>");
-            out.println("<input type=\"submit\" value=\"Volver a menú\">");
-            out.println("</form>");
-            out.println("</td></tr></table>");
-            out.println("</body>");
-            out.println("</html>");
+            response.sendRedirect("Menu.jsp");
         }
     }
 

@@ -42,9 +42,10 @@ public class ServletSupport extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Support</title>");
+            out.println("<title>Informacion del soporte</title>");
             out.println("</head>");
             out.println("<body>");
+            out.println("<table align='center'><tr align='left'><td>");
             out.println("<h1>Technical Support Form</h1>");
             Enumeration paramNames = request.getParameterNames();
 
@@ -79,7 +80,11 @@ public class ServletSupport extends HttpServlet {
             } else {
                 pay = "50.000";
             }
-            out.println("<tr><td>You have to pay:  " + pay + "</td></tr>");
+            out.println("You have to pay:  " + pay + "");
+            out.println("<form action='MenuPrincipal' method='post'>");
+            out.println("<input type=\"submit\" value=\"Volver a menú\">");
+            out.println("</form>");
+            out.println("</td></tr></table>");
             out.println("</body>");
             out.println("</html>");
         }

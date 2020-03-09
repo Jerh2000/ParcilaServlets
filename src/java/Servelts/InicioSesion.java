@@ -26,27 +26,13 @@ public class InicioSesion extends HttpServlet {
 		String user = req.getParameter("user");
 		String pass = req.getParameter("password");
 		if (user.equals("user009") && pass.equals("user0092020")) {
-			responseOK(resp);
+			resp.sendRedirect("Menu.jsp");
 		} else {
 			responseNO(resp, "invalid login");
 		}
 	}
 
-	private void responseOK(HttpServletResponse resp)
-			throws IOException {
-		PrintWriter out = resp.getWriter();
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<table align='center'>");
-                out.println("<tr><td align='center'><font size='9'>Ha iniciado sesión correctamente</font></td></tr>");
-                out.println("<tr><td align='center'><font size='4'>Elija una opcion</font></td></tr>");
-                out.println("<form action='Seleccion' method='post'><tr><td align='center'><input type='radio' name='opcion' value='Cliente'>Información Cliente</td></tr>");
-                out.println("<tr><td align='center'><input type='radio' name='opcion' value='Soporte'>Formulario de soporte técnico</td></tr></tr>");
-                out.println("<tr><td align='center'><input type='submit'></td></tr></form>");
-                out.println("</table>");
-		out.println("</body>");
-		out.println("</html>");
-	}
+	
         private void responseNO(HttpServletResponse resp, String msg)
 			throws IOException {
 		PrintWriter out = resp.getWriter();
